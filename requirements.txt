@@ -1,0 +1,3 @@
+pandas
+dash
+boto3
