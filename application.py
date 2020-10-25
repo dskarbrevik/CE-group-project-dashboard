@@ -6,7 +6,8 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-application = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+application = app.server
 
 # assume you have a "long-form" data frame
 # see https://plotly.com/python/px-arguments/ for more options
@@ -18,7 +19,7 @@ df = pd.DataFrame({
 
 fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 
-application.layout = html.Div(children=[
+app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
 
     html.Div(children='''
@@ -32,4 +33,4 @@ application.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    application.run_server(debug=True)
+    app.run(debug=False,port=8080)
