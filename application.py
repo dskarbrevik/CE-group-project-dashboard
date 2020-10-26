@@ -54,6 +54,8 @@ def get_data(table,time_points=100, delay_steps=3):
 
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+application = app.server
+
 
 df = get_data(table)
 
@@ -85,4 +87,4 @@ def update_example_graph(n):
     return(fig1,fig2)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=False, port=8080)
