@@ -11,7 +11,7 @@ import math
 import time
 
 dynamo = boto3.resource('dynamodb',
-                        region_name='us-east-2')
+                        region_name='us-east-1')
 
 table = dynamo.Table("tweet_metrics")
 
