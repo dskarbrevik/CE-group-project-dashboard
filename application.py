@@ -81,7 +81,7 @@ fig2 = px.line(df2, x='id', y=['Biden', 'Trump'],
 fig2.update_yaxes(title_font=dict(size=18))
 
 app.layout = html.Div(children=[
-    html.H1(children='Twitter Keyword Sentiment Analysis'),
+    html.H1(children='Twitter Keyword Sentiment Analysis: Election 2020'),
 
     html.Div(children='''
         Realtime tracking of public sentiment through Twitter's streaming API.
