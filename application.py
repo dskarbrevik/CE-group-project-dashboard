@@ -18,7 +18,7 @@ table = dynamo.Table("tweet_metrics")
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-def get_data(table,time_points=100, delay_steps=3):
+def get_data(table,time_points=150, delay_steps=3):
     start = time.time()
     response = table.scan()
     data = response['Items']
@@ -31,16 +31,18 @@ def get_data(table,time_points=100, delay_steps=3):
 
     timestamp = datetime.now(tz=timezone.utc)-timedelta(seconds=delay_steps*10)
     seconds = int(math.floor(timestamp.second/10)*10)
-    if seconds<30:
+    if seconds<20:
         seconds=0
+    elif seconds<40:
+        seconds=20
     else:
-        seconds=30
+        seconds=40
     timestamp = timestamp.replace(second=seconds, microsecond=0)
 
     data = []
     tmp_df = pd.DataFrame()
     for i in range(time_points):
-        tmp_time = str(timestamp-timedelta(seconds=30*i))
+        tmp_time = str(timestamp-timedelta(seconds=20*i))
         tmp_data = df[df['id']==tmp_time]
         if tmp_data.shape[0]==1:
             tmp_df = tmp_df.append(tmp_data)
