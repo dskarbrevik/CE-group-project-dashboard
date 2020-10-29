@@ -103,7 +103,7 @@ def update_example_graph(n):
                               'Trump tweet count':'Trump'})
 
     fig1 = px.line(df1, x='id', y=['Biden','Trump'],
-                   labels=dict(id="Time", value="Sentiment Score", variable="Term/Keyword"))
+                   labels=dict(id="Time", value="Sentiment Score (summed over 10s intervals)", variable="Term/Keyword"))
     fig1.update_yaxes(title_font=dict(size=18))
     fig2 = px.line(df2, x='id', y=['Biden', 'Trump'],
                    labels=dict(id="Time", value="Number of Tweets", variable="Term/Keyword"))
