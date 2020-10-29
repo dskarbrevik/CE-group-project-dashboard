@@ -66,7 +66,7 @@ def get_data(table,time_points=150, delay_steps=3):
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 application = app.server
-
+app.title = "Twitter Stream Analyzer"
 
 df1 = get_data(table)
 df2 = df1[['id','Biden tweet count', 'Trump tweet count']]
